@@ -14,6 +14,9 @@ lib.callback.register('fsg_scoreboard:getSpecificPlayer', function(source, targe
     local identifiers = {}
     local player = GetPlayer(target)
     local playerId = player.source
+    if QBCore then
+        playerId = player.PlayerData.source
+    end
     local fivemid = GetPlayerIdentifierByType(tostring(playerId), 'fivem')
     local discordid = GetPlayerIdentifierByType(tostring(playerId), 'discord')
     local xblid = GetPlayerIdentifierByType(tostring(playerId), 'xbl')
