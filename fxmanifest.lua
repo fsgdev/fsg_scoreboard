@@ -1,8 +1,10 @@
 fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
-description 'fsg_scoreboard'
-version '1.0.6'
+name 'fsg_scoreboard'
+author 'fsg'
+version '1.0.7'
+repository 'https://github.com/fsgdev/fsg_scoreboard'
 
 shared_scripts {
     '@ox_lib/init.lua',
