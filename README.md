@@ -11,4 +11,5 @@ An alternative to all the other scoreboards, taking advantage of overextended's 
 
 # Links
 Discord: https://discord.gg/vWuwWPckhB
+
 Webstore: https://fsgscripts.tebex.io
