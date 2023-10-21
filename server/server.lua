@@ -4,10 +4,12 @@ lib.callback.register('fsg_scoreboard:getPlayers', function(source)
     local data = {}
     local players = GetPlayers()
     for k, v in ipairs(players) do
-        local playerId = v.source
-        local netPlayer = GetPlayer(v)
+        local playerId
         if QBCore then
+            local netPlayer = GetPlayer(v)
             playerId = netPlayer.PlayerData.source
+        else
+            playerId = v.source
         end
         table.insert(data, {playerId = playerId, playerName = GetPlayerName(playerId)})
     end
