@@ -58,7 +58,7 @@ end
 function showScoreboard()
     local players = lib.callback.await('fsg_scoreboard:getPlayers')
     local options = {}
-    for k, v in ipairs(data) do
+    for k, v in ipairs(players) do
         table.insert(options, {
             label = '[' .. tostring(v.playerId) .. '] ' .. v.playerName,
             args = { playerId = v.playerId },
