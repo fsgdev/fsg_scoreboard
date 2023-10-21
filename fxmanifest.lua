@@ -4,7 +4,8 @@ lua54 'yes'
 
 shared_scripts {
     '@ox_lib/init.lua',
-    'config.lua'
+    'config.lua',
+    'framework.lua',
 }
 
 client_scripts {
