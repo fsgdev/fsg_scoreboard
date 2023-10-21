@@ -1,3 +1,4 @@
+![alt text](https://cdn.discordapp.com/attachments/924010680766595123/1165256338511769650/fsg_scoreboard.png?ex=65463088&is=6533bb88&hm=54a83303f8acc238c74ee19ab1050c668873e79752b66aa2fb2de4ca772fcbe0&)
 # fsg_scoreboard
 
 # Description
