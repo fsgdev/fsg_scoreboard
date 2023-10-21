@@ -6,6 +6,7 @@ end
 
 function showInfoMenu(id)
     lib.callback('fsg_scoreboard:getSpecificPlayer', false, function(playerId, playerName, steamhex, identifiers)
+        if steamhex == nil then steamhex = 'N/A' end
         local options = {
             {
                 label = locale('serverid')..': '..playerId,
