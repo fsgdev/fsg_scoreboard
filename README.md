@@ -8,3 +8,6 @@ An alternative to all the other scoreboards, taking advantage of overextended's 
 - Easy Installation
 - Optimized
 - Highly Configurable
+
+# Links
+Discord: https://discord.gg/vWuwWPckhB
