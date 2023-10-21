@@ -13,7 +13,9 @@ RegisterCommand(Config.Command, function(source)
     end)
     lib.showMenu('fsg_scoreboard_main')
 end)
-RegisterKeyMapping(Config.Command, 'Open Scoreboard', 'KEYBOARD', Config.Keybind)
+if Config.Keybind then
+    RegisterKeyMapping(Config.Command, 'Open Scoreboard', 'KEYBOARD', Config.Keybind)
+end
 
 Citizen.CreateThread(function()
     while true do 
