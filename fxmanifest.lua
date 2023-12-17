@@ -3,7 +3,7 @@ game 'gta5'
 lua54 'yes'
 name 'fsg_scoreboard'
 author 'fsg'
-version '1.0.6'
+version '1.1.0'
 repository 'https://github.com/fsgdev/fsg_scoreboard'
 
 shared_scripts {
