@@ -5,8 +5,11 @@ RegisterCommand(Config.Command, function(source)
         position = 'top-right',
         options = {
             { label = 'View Online Players', icon = 'fa-solid fa-users', close = true }
-        }
-    }, function(selected, scrollIndex, args)
+        },
+        onClose = function()
+            cleanupTags()
+        end,
+    }, function()
         showScoreboard()
     end)
     lib.showMenu('fsg_scoreboard_main')
@@ -18,26 +21,13 @@ end
 
 CreateThread(function()
     while (true) do
-        local w = 1000
+        local sleep = 250
         if lib.getOpenMenu() == 'fsg_scoreboard_players' or lib.getOpenMenu() == 'fsg_scoreboard_info' then
-            local Players = GetPlayersFromCoords(GetEntityCoords(PlayerPedId()), Config.Distance)
-            for _, Player in pairs(Players) do
-                local PlayerId = GetPlayerServerId(Player)
-                local Ped = GetPlayerPed(Player)
-                local PlayerCoords = GetPedBoneCoords(Ped, 0x796e)
-                local CanSee = HasEntityClearLosToEntity(PlayerPedId(), Ped, 20)
-                if CanSee then
-                    w = 0
-                    if NetworkIsPlayerTalking(Player) then
-                        DrawText3D(PlayerCoords.x, PlayerCoords.y, PlayerCoords.z + 0.35, PlayerId,
-                            { r = 46, g = 104, b = 255 })
-                    else
-                        DrawText3D(PlayerCoords.x, PlayerCoords.y, PlayerCoords.z + 0.35, PlayerId)
-                    end
-                end
-            end
+            displayTags()
+            sleep = 50
+        else
+            sleep = 250
         end
-
-        Wait(w)
+        Wait(sleep)
     end
 end)

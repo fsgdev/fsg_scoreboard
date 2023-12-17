@@ -110,19 +110,40 @@ function GetPlayersFromCoords(Coords, Distance)
     return ClosePlayers
 end
 
-function DrawText3D(X, Y, Z, Text, Color)
-    local Color = Color or { r = 255, g = 255, b = 255 }
-    SetTextScale(Config.IDScale, Config.IDScale)
-    SetTextFont(0)
-    SetTextProportional(1)
-    SetTextColour(Color.r, Color.g, Color.b, 255)
-    SetTextDropshadow(0, 0, 0, 0, 55)
-    SetTextEdge(2, 0, 0, 0, 150)
-    SetTextDropShadow()
-    SetTextOutline()
-    SetTextEntry("STRING")
-    SetTextCentre(1)
-    AddTextComponentString(Text)
-    SetDrawOrigin(X, Y, Z, 0)
-    DrawText(0, 0)
+local scoreboardTags = {}
+
+-------------------------------------------------------------------------------
+-- Nametags
+-- Credits to FiveM (https://github.com/citizenfx/cfx-server-data/blob/master/resources/%5Bgameplay%5D/playernames/playernames_cl.lua) & Tabarra (https://github.com/tabarra/txAdmin/blob/master/scripts/menu/client/cl_player_ids.lua)
+-------------------------------------------------------------------------------
+displayTags = function()
+    local playerPed = PlayerPedId()
+    local playerCoords = GetEntityCoords(playerPed)
+    for _, i in ipairs(GetActivePlayers()) do
+        local targetPed =  GetPlayerPed(i)
+        local targetCoords = GetEntityCoords(targetPed)
+        local nametagString = ('[%d]'):format(GetPlayerServerId(i))
+        if not scoreboardTags[i] or not IsMpGamerTagActive(scoreboardTags[i].tag) then
+            scoreboardTags[i] = {
+                tag = CreateFakeMpGamerTag(targetPed, nametagString, false, false, 0),
+                ped = targetPed,
+            }
+        end
+        local nametag = scoreboardTags[i].tag
+        local distance = #(targetCoords - playerCoords)
+        if (distance <= Config.Distance) and HasEntityClearLosToEntity(playerPed, targetPed, 17) then
+            SetMpGamerTagVisibility(nametag, 0, true)
+        else
+            SetMpGamerTagVisibility(nametag, 0, false)
+        end
+    end
+end
+
+cleanupTags = function()
+    for _, v in pairs(scoreboardTags) do
+        if IsMpGamerTagActive(v.tag) then
+            RemoveMpGamerTag(v.tag)
+        end
+    end
+    scoreboardTags = {}
 end
