@@ -115,7 +115,7 @@ displayTags = function()
     for _, i in ipairs(GetActivePlayers()) do
         local targetPed =  GetPlayerPed(i)
         local targetCoords = GetEntityCoords(targetPed)
-        local nametagString = ('[%d]'):format(GetPlayerServerId(i))
+        local nametagString = ('ID: [%d]'):format(GetPlayerServerId(i))
         if not scoreboardTags[i] or not IsMpGamerTagActive(scoreboardTags[i].tag) then
             scoreboardTags[i] = {
                 tag = CreateFakeMpGamerTag(targetPed, nametagString, false, false, 0),

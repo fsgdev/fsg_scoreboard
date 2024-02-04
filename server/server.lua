@@ -3,7 +3,13 @@ lib.callback.register('fsg_scoreboard:getPlayers', function(source)
     local players = GetPlayers()
     for k, v in ipairs(players) do
         local playerId = QBCore and GetPlayer(v).PlayerData.source or v.source
-        table.insert(data, {playerId = playerId, playerName = ''..GetPlayerName(playerId)})
+        local playerName
+        if Config.UseSteamHexAsPlayerName then
+            playerName = GetPlayerIdentifierByType(tostring(playerId), 'steam')
+        else
+            playerName = GetPlayerName(playerId)
+        end
+        table.insert(data, {playerId = playerId, playerName = ''..playerName})
     end
     return data
 end)

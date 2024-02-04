@@ -10,3 +10,4 @@ Config.Distance = 20.0 -- Required
 Config.IDScale = 0.4 -- Required
 Config.Keybind = 'U' -- if don't want to use a keybind, set to false
 Config.Command = 'score' -- Required
+Config.UseSteamHexAsPlayerName = true
