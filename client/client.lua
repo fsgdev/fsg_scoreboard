@@ -5,12 +5,16 @@ RegisterCommand(Config.Command, function(source)
         position = 'top-right',
         options = {
             { label = 'View Online Players', icon = 'fa-solid fa-users', close = true }
-        }
-    }, function(selected, scrollIndex, args)
+        },
+        onClose = function()
+            cleanupTags()
+        end,
+    }, function()
         showScoreboard()
     end)
     lib.showMenu('fsg_scoreboard_main')
 end)
+
 if Config.Keybind then
     RegisterKeyMapping(Config.Command, 'Open Scoreboard', 'KEYBOARD', Config.Keybind)
 end
@@ -22,7 +26,6 @@ CreateThread(function()
             displayTags()
             sleep = 50
         else
-            cleanupTags()
             sleep = 250
         end
         Wait(sleep)
