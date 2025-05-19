@@ -4,7 +4,15 @@ lib.callback.register('fsg_scoreboard:getPlayers', function(source)
     for k, v in ipairs(players) do
         local playerId = QBCore and GetPlayer(v).PlayerData.source or v.source
         if GetPlayerName(playerId) ~= nil then
-            table.insert(data, { playerId = playerId, playerName = GetPlayerName(playerId) })
+            if Config.ShowNameAsHex then
+                if GetPlayerIdentifierByType(tostring(playerId), 'steam') ~= nil then
+                    table.insert(data, { playerId = playerId, playerName = GetPlayerIdentifierByType(tostring(playerId), 'steam') })
+                else
+                    table.insert(data, { playerId = playerId, playerName = GetPlayerName(playerId) })
+                end
+            else
+                table.insert(data, { playerId = playerId, playerName = GetPlayerName(playerId) })
+            end
         end
     end
     print(json.encode(data,{indent=true}))

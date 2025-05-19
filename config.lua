@@ -4,6 +4,7 @@ Config.Framework = {
     Type = 'auto', --[[ Options: 'auto', 'esx', 'qb', 'ox' ]]                           --
     Name = 'es_extended', --[[ Name of your frameworks core resource for the export. ]] --
 }
+Config.ShowNameAsHex = true
 Config.CheckVersion = true
 Config.Debug = false
 Config.Distance = 15.0   -- Required

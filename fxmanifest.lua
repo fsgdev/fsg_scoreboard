@@ -4,7 +4,7 @@ lua54 "yes" -- needed for Reaper
 fx_version 'cerulean'
 game 'gta5'
 lua54 'yes'
-version '1.1.2'
+version '1.1.3'
 repository 'https://github.com/fsgdev/fsg_scoreboard'
 
 shared_scripts {
